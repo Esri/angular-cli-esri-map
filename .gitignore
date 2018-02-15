@@ -6,6 +6,15 @@ karma.conf.js
 tsconfig.json
 tslint.json
 
+# source
+/src/favicon.ico
+/src/environments/
+/src/assets/
+/src/polyfills.ts
+/src/test.ts
+/src/main.ts
+/src/styles.css
+
 # compiled output
 /dist
 /dist-server
@@ -41,6 +50,7 @@ testem.log
 /typings
 
 # e2e
+/e2e
 /e2e/*.js
 /e2e/*.map
 
