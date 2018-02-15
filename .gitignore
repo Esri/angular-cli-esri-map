@@ -1,5 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 package.json
+.angular-cli.json
+.editorconfig
+karma.conf.js
+tsconfig.json
+tslint.json
 
 # compiled output
 /dist
