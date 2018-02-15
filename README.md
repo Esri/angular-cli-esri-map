@@ -1,27 +1,148 @@
-# AngularCliEsriMap
+# angular-cli-esri-map
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+This tutorial shows you how to integrate the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript), which is an enterprise geospatial API, using [Angular CLI](https://github.com/angular/angular-cli).
 
-## Development server
+The source code in this repo demonstrates using a simple mapping component without any services.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This repo has the following dependencies:
+* [Angular CLI](https://github.com/angular/angular-cli)
+* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
+* [`esri-loader`](https://github.com/Esri/esri-loader)
+* [`arcgis-js-api.d.ts`](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) Esri TypeScript type definitions
 
-## Build
+## Build your project
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+If you are just getting started with Angular developer then below are the steps for creating a sample Hello World mapping application. 
 
-## Running unit tests
+Once you are comfortable with the getting started steps, then feel free to explore building out the app one step further but using the rest of the component conde in the repo. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Clone or download this repo
 
-## Running end-to-end tests
+```
+  git clone https://github.com/andygup/angular-cli-esri.git
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#### Install Angular CLI and generate a new project
 
-## Further help
+Make sure you have Angular CLI installed. See the instructions here: https://github.com/angular/angular-cli
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Now, let's generate your Angular project.
+
+```
+  ng new esri-app
+  cd esri-app
+  ng serve
+```
+
+* Navigate to http://localhost:4200/ and the basic app should run just fine. The app will automatically reload if you change any of the source files.
+
+If the app ran just fine, go ahead and shut down `ng serve` by doing a `Control-C` in the terminal window.
+
+
+#### Install `esri-loader` and the Esri TypeScript types
+
+We need [`esri-loader`](https://github.com/Esri/esri-loader#usage) because it is a low level service that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
+
+And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript).
+
+
+```
+  npm install --save esri-loader
+  npm install --save @types/arcgis-js-api
+```
+
+#### Generate the scaffolding for your mapping component
+
+```
+  ng generate component esri-map
+  
+  //or you can also use shorthand
+  
+  ng g component esri-map
+```
+
+
+* Copy the contents from the `angular-cli-esri-map/src/app/esri-map` folder into the `esri-app/src/app/esri-map` directory.
+
+* Add the following code to the bottom of the `app.component.html` file.
+
+```
+  <app-esri-map></app-esri-map>
+```
+
+* In `tsconfig.app.json` add `"types": ["arcgis-js-api"]`. 
+
+* In  `tsconfig.spec.json` add `"types": ["arcgis-js-api"]`. 
+
+
+#### Make sure the mapping app runs
+
+Now run the following command and you should see our mapping appear on the page.
+
+```
+  ng serve
+```
+
+If you see the mapping app and it runs without errors go ahead and shutdown `ng serve` with a `Control C`.
+
+#### Build our spec and run it to make sure everything is good
+
+Copy `app.component.spec.ts` into the `/app` directory.
+
+```
+  import { TestBed, async } from '@angular/core/testing';
+  import { AppComponent } from './app.component';
+  import {EsriMapComponent} from './esri-map/esri-map.component';
+  
+  describe('AppComponent', () => {
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          AppComponent,
+          EsriMapComponent
+        ],
+      }).compileComponents();
+    }));
+    it('should create the app', async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      expect(app).toBeTruthy();
+    }));
+    it(`should have as title 'app'`, async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      expect(app.title).toEqual('app');
+    }));
+    it('should render title in a h1 tag', async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    }));
+  });
+```
+
+Now lets see if the test spec passes.
+
+```
+  ng test
+```
+
+# Contributing
+
+Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
+
+# Licensing
+
+Copyright 2018 Esri
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+A copy of the license is available in the repository's license.txt file.
