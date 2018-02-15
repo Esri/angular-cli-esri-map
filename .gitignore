@@ -5,6 +5,7 @@ package.json
 karma.conf.js
 tsconfig.json
 tslint.json
+protractor.conf.js
 
 # source
 /src/favicon.ico
@@ -14,6 +15,8 @@ tslint.json
 /src/test.ts
 /src/main.ts
 /src/styles.css
+/src/favicon.ico
+/src/typings.d.ts
 
 # compiled output
 /dist
