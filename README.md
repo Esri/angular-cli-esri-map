@@ -2,7 +2,7 @@
 
 This tutorial shows you how to integrate the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript), which is an enterprise geospatial API, using [Angular CLI](https://github.com/angular/angular-cli).
 
-The source code in this repo demonstrates using a simple mapping component without any services.
+This repo demonstrates implementing a simple, extensible mapping component without any services. 
 
 
 ## Dependencies
@@ -17,12 +17,12 @@ This repo has the following dependencies:
 
 If you are just getting started with Angular developer then below are the steps for creating a sample Hello World mapping application. 
 
-Once you are comfortable with the getting started steps, then feel free to explore building out the app one step further but using the rest of the component conde in the repo. 
+Once you are comfortable with the getting started steps, then feel free to explore building out the app using the rest of the `app.component` code. 
 
 #### Clone or download this repo
 
 ```
-  git clone https://github.com/andygup/angular-cli-esri.git
+  git clone https://github.com/andygup/angular-cli-esri-map.git
 ```
 
 #### Install Angular CLI and generate a new project
@@ -75,7 +75,7 @@ And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https
 
 * In `tsconfig.app.json` add `"types": ["arcgis-js-api"]`. 
 
-* In  `tsconfig.spec.json` add `"types": ["arcgis-js-api"]`. 
+* In `tsconfig.spec.json` add `"types": ["arcgis-js-api"]`. 
 
 
 #### Make sure the mapping app runs
@@ -130,6 +130,10 @@ Now lets see if the test spec passes.
 ```
   ng test
 ```
+
+# Bonus
+
+Copy all `app.component.*` files into your new Angular CLI project's `/app` directory. Run `ng test` to make sure the code copied over correctly, then run `ng serve`.
 
 # Contributing
 
