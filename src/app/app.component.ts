@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'ArcGIS API for JavaScript';
-
   // Set our map properties
   mapCenter = [-122.4194, 37.7749];
   basemapType = 'satellite';
