@@ -15,9 +15,9 @@ This repo has the following dependencies:
 
 ## Build your project
 
-If you are just getting started with Angular developer then below are the steps for creating a sample Hello World mapping application. 
+If you are just getting started with Angular development, listed below are the steps for creating a simple Hello World mapping application with Angular CLI. 
 
-Once you are comfortable with the getting started steps, then feel free to explore building out the app using the rest of the `app.component` code. 
+Once you are comfortable with the getting started steps, feel free to explore building out the app using the rest of the `app.component` code. 
 
 #### Clone or download this repo
 
@@ -29,7 +29,7 @@ Once you are comfortable with the getting started steps, then feel free to explo
 
 Make sure you have Angular CLI installed. See the instructions here: https://github.com/angular/angular-cli
 
-* Now, let's generate your Angular project.
+* Now, let's generate your Angular project. Run the following commands in a terminal window or shell:
 
 ```
   ng new esri-app
@@ -39,7 +39,7 @@ Make sure you have Angular CLI installed. See the instructions here: https://git
 
 * Navigate to http://localhost:4200/ and the basic app should run just fine. The app will automatically reload if you change any of the source files.
 
-If the app ran just fine, go ahead and shut down `ng serve` by doing a `Control-C` in the terminal window.
+If the app ran just fine, go ahead and shut down `ng serve` by doing a `Control-C`.
 
 
 #### Install `esri-loader` and the Esri TypeScript types
