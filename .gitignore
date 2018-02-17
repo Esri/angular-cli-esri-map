@@ -6,6 +6,7 @@ karma.conf.js
 tsconfig.json
 tslint.json
 protractor.conf.js
+index.html
 
 # source
 /src/favicon.ico
