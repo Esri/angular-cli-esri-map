@@ -19,7 +19,7 @@ protractor.conf.js
 /src/typings.d.ts
 
 # compiled output
-/dist
+# /dist # we do want to allow /dist so we can display the sample app
 /dist-server
 /tmp
 /out-tsc
