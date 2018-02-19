@@ -11,7 +11,7 @@
   limitations under the License.
 */
 
-import {Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { loadModules } from 'esri-loader';
 import esri = __esri;
 
@@ -63,33 +63,37 @@ export class EsriMapComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
+    const options = {
+      url: 'https://js.arcgis.com/4.6/',
+      css: 'https://js.arcgis.com/4.6/esri/css/main.css'
+    };
 
     loadModules([
       'esri/Map',
       'esri/views/MapView'
-    ]).then(([EsriMap, EsriMapView]) => {
+    ], options)
+      .then(([EsriMap, EsriMapView]) => {
+        const map: esri.Map = new EsriMap({
+          basemap: this._basemap
+        });
 
-      const map: esri.Map = new EsriMap({
-        basemap: this._basemap
-      });
+        let mapView: esri.MapView = new EsriMapView({
+          container: this.mapViewEl.nativeElement,
+          center: this._center,
+          zoom: this._zoom,
+          map: map
+        });
 
-      let mapView: esri.MapView = new EsriMapView({
-        container: this.mapViewEl.nativeElement,
-        center: this._center,
-        zoom: this._zoom,
-        map: map
-      });
-
-      mapView.when( () => {
-        // All the resources in the MapView and the map have loaded. Now execute additional processes
-        this.mapLoaded.emit(true);
-      }, err => {
+        mapView.when(() => {
+          // All the resources in the MapView and the map have loaded. Now execute additional processes
+          this.mapLoaded.emit(true);
+        }, err => {
+          console.error(err);
+        });
+      })
+      .catch(err => {
         console.error(err);
       });
-    })
-    .catch(err => {
-      console.error(err);
-    });
   } // ngOnInit
 
 }
