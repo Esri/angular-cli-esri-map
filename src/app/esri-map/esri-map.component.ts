@@ -63,17 +63,12 @@ export class EsriMapComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
-    const options = {
-      url: 'https://js.arcgis.com/4.6/',
-      css: 'https://js.arcgis.com/4.6/esri/css/main.css'
-    };
-
     loadModules([
       'esri/Map',
       'esri/views/MapView'
-    ], options)
+    ])
       .then(([EsriMap, EsriMapView]) => {
-        const map: esri.Map = new EsriMap({
+        let map: esri.Map = new EsriMap({
           basemap: this._basemap
         });
 
