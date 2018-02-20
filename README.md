@@ -95,7 +95,7 @@ Copy `app.component.spec.ts` into the `/app` directory.
 ```
   import { TestBed, async } from '@angular/core/testing';
   import { AppComponent } from './app.component';
-  import {EsriMapComponent} from './esri-map/esri-map.component';
+  import { EsriMapComponent } from './esri-map/esri-map.component';
   
   describe('AppComponent', () => {
     beforeEach(async(() => {

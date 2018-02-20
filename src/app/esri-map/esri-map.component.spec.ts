@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EsriMapComponent } from './esri-map.component';
-import {AppComponent} from '../app.component';
+import { AppComponent } from '../app.component';
 
 describe('EsriMapComponent', () => {
   let component: EsriMapComponent;
@@ -10,20 +10,20 @@ describe('EsriMapComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EsriMapComponent ]
+      declarations: [EsriMapComponent]
     })
       .compileComponents();
-      fixture = TestBed.createComponent(EsriMapComponent);
-      app = fixture.debugElement.componentInstance;
-      component = fixture.componentInstance;
-      fixture.detectChanges();
+    fixture = TestBed.createComponent(EsriMapComponent);
+    app = fixture.debugElement.componentInstance;
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it( 'should create MapView', () => {
+  it('should create MapView', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('mapViewNode')).toBeDefined();
   });
@@ -42,7 +42,7 @@ describe('EsriMapComponent', () => {
     expect(app.zoom).toBeLessThanOrEqual(24);
   });
 
-  it( 'mapLoaded event fired', (done) => {
+  it('mapLoaded event fired', (done) => {
     app.mapLoaded.subscribe(g => {
       expect(g).toBeTruthy();
       done();
