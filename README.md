@@ -2,7 +2,7 @@
 
 This tutorial shows you how to integrate the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript), which is an enterprise geospatial API, using [Angular CLI](https://github.com/angular/angular-cli).
 
-This repo demonstrates implementing a simple, extensible mapping component without any services. 
+This repo demonstrates implementing a simple, extensible mapping component. Use this repo as a building block for adding in more advanced capabilities.
 
 
 ## Dependencies
