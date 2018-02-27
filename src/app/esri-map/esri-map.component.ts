@@ -68,16 +68,23 @@ export class EsriMapComponent implements OnInit {
       'esri/views/MapView'
     ])
       .then(([EsriMap, EsriMapView]) => {
-        let map: esri.Map = new EsriMap({
-          basemap: this._basemap
-        });
 
-        let mapView: esri.MapView = new EsriMapView({
+        // Set type for Map constructor properties
+        const mapProperties: esri.MapProperties = {
+          basemap: this._basemap
+        };
+
+        let map: esri.Map = new EsriMap(mapProperties);
+
+        // Set type for MapView constructor properties
+        const mapViewProperties: esri.MapViewProperties = {
           container: this.mapViewEl.nativeElement,
           center: this._center,
           zoom: this._zoom,
           map: map
-        });
+        };
+
+        let mapView: esri.MapView = new EsriMapView(mapViewProperties);
 
         mapView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes
@@ -90,5 +97,4 @@ export class EsriMapComponent implements OnInit {
         console.error(err);
       });
   } // ngOnInit
-
 }
