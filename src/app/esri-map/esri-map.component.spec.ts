@@ -23,11 +23,6 @@ describe('EsriMapComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create MapView', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('mapViewNode')).toBeDefined();
-  });
-
   it('basemap has a default value', () => {
     expect(app.basemap).toEqual(jasmine.any(String));
   });
