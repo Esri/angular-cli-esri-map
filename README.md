@@ -17,7 +17,9 @@ This repo has the following dependencies:
 
 If you are just getting started with Angular development, listed below are the steps for creating a simple Hello World mapping application with Angular CLI. 
 
-Once you are comfortable with the getting started steps, feel free to explore building out the app using the rest of the `app.component` code. 
+Once you are comfortable with the getting started steps, feel free to explore building out the app using the rest of the `app.component` code.
+
+There is also a getting started video if that's easier: [https://www.youtube.com/watch?v=ZEH9kOwDgx0](https://www.youtube.com/watch?v=ZEH9kOwDgx0). 
 
 #### Clone or download this repo
 
