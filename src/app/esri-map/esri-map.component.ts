@@ -93,7 +93,7 @@ export class EsriMapComponent implements OnInit {
         this.mapLoaded.emit(true);
       });
     } catch (error) {
-      alert('We have an error: ' + error);
+      console.log('We have an error: ' + error);
     }
 
   }
