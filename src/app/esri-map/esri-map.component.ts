@@ -39,7 +39,7 @@ export class EsriMapComponent implements OnInit {
     this._zoom = zoom;
   }
 
-  get(): number {
+  get zoom(): number {
     return this._zoom;
   }
 
