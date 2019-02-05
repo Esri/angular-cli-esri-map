@@ -17,7 +17,7 @@ This repo has the following dependencies:
 
 If you are just getting started with Angular development, listed below are the steps for creating a simple Hello World mapping application with Angular CLI.
 
-Once you are comfortable with the getting started steps, feel free to explore building out the app using the rest of the `app.component` code.
+Once you are comfortable with the getting started steps, feel free to explore building out the app using the rest of the code in this repo.
 
 There is also a getting started video if that's easier: [https://www.youtube.com/watch?v=ZEH9kOwDgx0](https://www.youtube.com/watch?v=ZEH9kOwDgx0). 
 
@@ -29,13 +29,14 @@ There is also a getting started video if that's easier: [https://www.youtube.com
 
 ### Install Angular CLI and generate a new project
 
-Make sure you have Angular CLI installed. See the instructions here: https://github.com/angular/angular-cli
+Make sure you have Angular CLI installed. See the instructions here: https://cli.angular.io/
 
 ### Install `esri-loader` and the Esri TypeScript types
 
-We need [`esri-loader`](https://github.com/Esri/esri-loader#usage) because it is a low level service that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
+You need [`esri-loader`](https://github.com/Esri/esri-loader#usage) because it is a low level service that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
 
-And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript).
+And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript). 
+Note: using the Esri Types is optional. However, you'll need to modify this repos code to work without Types.
 
 ```bash
   npm install --save esri-loader
@@ -51,13 +52,9 @@ And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https
   ng g component esri-map
 ```
 
-Copy the contents from the `angular-cli-esri-map/src/app/esri-map` folder into the `esri-app/src/app/esri-map` directory.
+Copy the contents from the `angular-cli-esri-map/src/app/esri-map` folder into your new `esri-app/src/app/esri-map` directory.
 
-Add the following code to the bottom of the `app.component.html` file.
-
-```html
-  <app-esri-map></app-esri-map>
-```
+Copy the `app.components` contents from `angular-cli-esri-map/src/app` into your new `esri-app/src/app/` directory.
 
 * In `tsconfig.app.json` add `"types": ["arcgis-js-api"]`.
 
@@ -116,9 +113,6 @@ Now lets see if the test spec passes by running:
   ng test
 ```
 
-## Bonus
-
-Copy all `app.component.*` files into your new Angular CLI project's `/app` directory. Run `ng test` to make sure the code copied over correctly, then run `ng serve`.
 
 ## Contributing
 
@@ -126,7 +120,7 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
 
 ## Licensing
 
-Copyright 2018 Esri
+Copyright 2019 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
