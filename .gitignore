@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 package.json
+package-lock.json
+angular.json
 .angular-cli.json
 .editorconfig
 karma.conf.js
@@ -18,6 +20,7 @@ index.html
 /src/styles.css
 /src/favicon.ico
 /src/typings.d.ts
+/src/browserslist
 
 # compiled output
 # /dist # we do want to allow /dist so we can display the sample app
@@ -27,6 +30,11 @@ index.html
 
 # dependencies
 /node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
 
 # IDEs and editors
 /.idea
@@ -43,6 +51,7 @@ index.html
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 
 # misc
 /.sass-cache
@@ -50,6 +59,7 @@ index.html
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
 
