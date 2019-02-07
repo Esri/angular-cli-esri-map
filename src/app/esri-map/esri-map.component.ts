@@ -1,5 +1,5 @@
 /*
-  Copyright 2018 Esri
+  Copyright 2019 Esri
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { loadModules } from 'esri-loader';
-import esri = __esri;
+import esri = __esri; // Esri TypeScript Types
 
 @Component({
   selector: 'app-esri-map',
@@ -22,17 +22,26 @@ import esri = __esri;
 })
 export class EsriMapComponent implements OnInit {
 
-  @Output() mapLoaded = new EventEmitter<boolean>();
+  @Output() mapLoadedEvent = new EventEmitter<boolean>();
+
+  // The <div> where we will place the map
   @ViewChild('mapViewNode') private mapViewEl: ElementRef;
 
   /**
-   * @private _zoom sets map zoom
-   * @private _center sets map center
-   * @private _basemap sets type of map
+   * _zoom sets map zoom
+   * _center sets map center
+   * _basemap sets type of map
+   * _loaded provides map loaded status
    */
-  private _zoom: number = 10;
+  private _zoom = 10;
   private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap: string = 'streets';
+  private _basemap = 'streets';
+  private _loaded = false;
+
+
+  get mapLoaded(): boolean {
+    return this._loaded;
+  }
 
   @Input()
   set zoom(zoom: number) {
@@ -65,19 +74,21 @@ export class EsriMapComponent implements OnInit {
 
   async initializeMap() {
     try {
+
+      // Load the modules for the ArcGIS API for JavaScript
       const [EsriMap, EsriMapView] = await loadModules([
         'esri/Map',
         'esri/views/MapView'
       ]);
 
-      // Set type of map
+      // Configure the Map
       const mapProperties: esri.MapProperties = {
         basemap: this._basemap
       };
 
       const map: esri.Map = new EsriMap(mapProperties);
 
-      // Set type of map view
+      // Initialize the MapView
       const mapViewProperties: esri.MapViewProperties = {
         container: this.mapViewEl.nativeElement,
         center: this._center,
@@ -85,21 +96,28 @@ export class EsriMapComponent implements OnInit {
         map: map
       };
 
-      const mapView: esri.MapView = new EsriMapView(mapViewProperties);
+      return new EsriMapView(mapViewProperties);
 
-      // All resources in the MapView and the map have loaded.
-      // Now execute additional processes
-      mapView.when(() => {
-        this.mapLoaded.emit(true);
-      });
     } catch (error) {
-      console.log('We have an error: ' + error);
+      console.log('EsriLoader: ', error);
     }
 
   }
 
+  // Finalize a few things once the MapView has been loaded
+  houseKeeping(mapView) {
+    mapView.when(() => {
+      console.log('mapView ready: ', mapView.ready);
+      this._loaded = mapView.ready;
+      this.mapLoadedEvent.emit(true);
+    });
+  }
+
   ngOnInit() {
-    this.initializeMap();
+    // Initialize MapView and return an instance of MapView
+    this.initializeMap().then((mapView) => {
+      this.houseKeeping(mapView);
+    });
   }
 
 }
