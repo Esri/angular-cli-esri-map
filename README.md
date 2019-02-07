@@ -29,11 +29,11 @@ There is also a getting started video if that's easier: [https://www.youtube.com
 
 ### Install Angular CLI and generate a new project
 
-Make sure you have Angular CLI installed. See the instructions here: https://cli.angular.io/
+Create a basic Angular CLI project. Make sure you have Angular CLI installed using standard CSS. See the instructions here: https://cli.angular.io/: 
 
 ### Install `esri-loader` and the Esri TypeScript types
 
-You need [`esri-loader`](https://github.com/Esri/esri-loader#usage) because it is a low level service that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
+You need [`esri-loader`](https://github.com/Esri/esri-loader#usage). It is a low level service that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
 
 And, the ArcGIS JavaScript TypeScript type definitions can be found [here](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript). 
 Note: using the Esri Types is optional. However, you'll need to modify this repos code to work without Types.
@@ -69,49 +69,6 @@ Now run the following command and you should see our mapping appear on the page.
 ```
 
 Navigate to http://localhost:4200/ to see the app. The app will automatically reload if you change any of the source files. If you see the mapping app and it runs without errors then you have been successful with getting started. You can go ahead and shutdown `ng serve` with a `Control C` anytime you wish.
-
-### Build our spec and run it to make sure everything is good
-
-Copy `app.component.spec.ts` into the `/app` directory.
-
-```typescript
-  import { TestBed, async } from '@angular/core/testing';
-  import { AppComponent } from './app.component';
-  import { EsriMapComponent } from './esri-map/esri-map.component';
-
-  describe('AppComponent', () => {
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          AppComponent,
-          EsriMapComponent
-        ],
-      }).compileComponents();
-    }));
-    it('should create the app', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
-    }));
-    it(`should have as title 'app'`, async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app.title).toEqual('app');
-    }));
-    it('should render title in a h1 tag', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-    }));
-  });
-```
-
-Now lets see if the test spec passes by running:
-
-```bash
-  ng test
-```
 
 
 ## Contributing

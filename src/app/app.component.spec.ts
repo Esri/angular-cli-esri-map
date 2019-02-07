@@ -3,7 +3,8 @@ import { AppComponent } from './app.component';
 import { EsriMapComponent } from './esri-map/esri-map.component';
 
 describe('AppComponent', () => {
-  let fixture, app, spy;
+  let fixture, app;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -34,4 +35,10 @@ describe('AppComponent', () => {
     expect(app.mapCenter).toEqual(jasmine.any(Array));
     expect(app.mapCenter.length).toEqual(2);
   }));
+
+  it('zoom has a default value', async( () => {
+    expect(app.mapZoomLevel).toBeGreaterThanOrEqual(0);
+    expect(app.mapZoomLevel).toBeLessThanOrEqual(24);
+  }));
+
 });
