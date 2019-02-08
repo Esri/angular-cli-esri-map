@@ -6,10 +6,12 @@ This repo demonstrates implementing a simple, extensible mapping component. Use 
 
 ## Dependencies
 
-This repo has the following dependencies:
+This repo is only tested to work with the most current versions of the following dependencies.
 
-* [Angular CLI](https://github.com/angular/angular-cli)
-* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
+**Note: This repo is designed to work with Angular 6+ only.**
+
+* [Angular CLI](https://github.com/angular/angular-cli) 
+* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) 
 * [`esri-loader`](https://github.com/Esri/esri-loader)
 * [`arcgis-js-api.d.ts`](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) Esri TypeScript type definitions
 
