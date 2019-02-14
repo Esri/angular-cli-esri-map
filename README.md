@@ -58,9 +58,11 @@ Copy the contents from the `angular-cli-esri-map/src/app/esri-map` folder into y
 
 Copy the `app.components` contents from `angular-cli-esri-map/src/app` into your new `esri-app/src/app/` directory.
 
-* In `tsconfig.app.json` add `"types": ["arcgis-js-api"]`.
+If you are using a version less than Angular 7, the following steps maybe required if you want to use the Esri Typescript Types.
 
-* In `tsconfig.spec.json` add `"types": ["arcgis-js-api"]`.
+* In `tsconfig.app.json` add `"types": ["arcgis-js-api"]`. 
+
+* In `tsconfig.spec.json` add `"types": ["arcgis-js-api"]`. 
 
 ### Make sure the mapping app runs
 
