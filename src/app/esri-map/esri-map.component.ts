@@ -18,14 +18,14 @@ import esri = __esri; // Esri TypeScript Types
 @Component({
   selector: 'app-esri-map',
   templateUrl: './esri-map.component.html',
-  styleUrls: ['./esri-map.component.css']
+  styleUrls: ['./esri-map.component.scss']
 })
 export class EsriMapComponent implements OnInit {
 
   @Output() mapLoadedEvent = new EventEmitter<boolean>();
 
   // The <div> where we will place the map
-  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode', {static: true}) private mapViewEl: ElementRef;
 
   /**
    * _zoom sets map zoom
