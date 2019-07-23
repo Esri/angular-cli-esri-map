@@ -18,9 +18,14 @@ index.html
 /src/test.ts
 /src/main.ts
 /src/styles.css
+src/styles.scss
 /src/favicon.ico
 /src/typings.d.ts
 /src/browserslist
+/src/app/*.scss
+/src/app/app.component.spec.ts
+/src/app/esri-map/esri-map.component.spec.ts
+/src/tsconfig.spec.json
 
 # compiled output
 # /dist # we do want to allow /dist so we can display the sample app
