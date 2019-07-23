@@ -22,7 +22,6 @@ src/styles.scss
 /src/favicon.ico
 /src/typings.d.ts
 /src/browserslist
-/src/app/*.scss
 /src/app/app.component.spec.ts
 /src/app/esri-map/esri-map.component.spec.ts
 /src/tsconfig.spec.json
