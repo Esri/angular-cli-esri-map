@@ -8,7 +8,7 @@ If you would like to create your own Angular CLI project from scratch and incorp
 
 ## Dependencies
 
-**Note: This repo is designed to work with Angular 6+ and is only tested to work with the most current version of the following dependencies.**
+**Note: This repo is only tested to work with the most current version of the following dependencies.**
 
 - [Angular CLI](https://github.com/angular/angular-cli)
 - [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
@@ -51,10 +51,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Contributing
 
