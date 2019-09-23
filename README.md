@@ -1,6 +1,6 @@
 # angular-cli-esri-map
 
-This tutorial expalins how to generate an Angular application integrated with the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript) using the [Angular CLI](https://github.com/angular/angular-cli).
+This tutorial explains how to generate an Angular application integrated with the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript) using the [Angular CLI](https://github.com/angular/angular-cli).
 
 This repo implements a simple, extensible mapping component. Use this repo as a building block for adding more advanced capabilities.
 
