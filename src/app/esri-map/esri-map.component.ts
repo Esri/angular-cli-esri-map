@@ -122,6 +122,9 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._view.container = null;
+    if (this._view) {
+      // destroy the map view
+      this._view.container = null;
+    }
   }
 }
