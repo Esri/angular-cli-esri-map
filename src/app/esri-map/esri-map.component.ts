@@ -41,11 +41,11 @@ export class EsriMapComponent implements OnInit, OnDestroy {
    * _basemap sets type of map
    * _loaded provides map loaded status
    */
-  view: esri.MapView;
   private _zoom = 10;
   private _center: Array<number> = [0.1278, 51.5074];
   private _basemap = "streets";
   private _loaded = false;
+  private _view: esri.MapView = null;
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -103,30 +103,25 @@ export class EsriMapComponent implements OnInit, OnDestroy {
         map: map
       };
 
-      this.view = new EsriMapView(mapViewProperties);
-      return this.view;
+      this._view = new EsriMapView(mapViewProperties);
+      await this._view.when();
+      return this._view;
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
   }
 
-  // Finalize a few things once the MapView has been loaded
-  houseKeeping() {
-    this.view.when(() => {
-      console.log("mapView ready: ", this.view.ready);
-      this._loaded = this.view.ready;
+  ngOnInit() {
+    // Initialize MapView and return an instance of MapView
+    this.initializeMap().then(mapView => {
+      // The map has been initialized
+      console.log("mapView ready: ", this._view.ready);
+      this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
     });
   }
 
-  ngOnInit() {
-    // Initialize MapView and return an instance of MapView
-    this.initializeMap().then(mapView => {
-      this.houseKeeping();
-    });
-  }
-
   ngOnDestroy() {
-    this.view.container = null;
+    this._view.container = null;
   }
 }
