@@ -1,44 +1,18 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-package.json
-package-lock.json
-angular.json
-.angular-cli.json
-.editorconfig
-karma.conf.js
-tsconfig.json
-tslint.json
-protractor.conf.js
-index.html
-
-# source
-/src/favicon.ico
-/src/environments/
-/src/assets/
-/src/polyfills.ts
-/src/test.ts
-/src/main.ts
-/src/styles.css
-src/styles.scss
-/src/favicon.ico
-/src/typings.d.ts
-/src/browserslist
-/src/app/app.component.spec.ts
-/src/app/esri-map/esri-map.component.spec.ts
-/src/tsconfig.spec.json
 
 # compiled output
-# /dist # we do want to allow /dist so we can display the sample app
-/dist-server
+/dist
 /tmp
 /out-tsc
+# Only exists if Bazel was run
+/bazel-out
 
 # dependencies
 /node_modules
 
 # profiling files
-chrome-profiler-events.json
-speed-measure-plugin.json
-
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -66,11 +40,6 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
-# e2e
-/e2e
-/e2e/*.js
-/e2e/*.map
 
 # System Files
 .DS_Store
