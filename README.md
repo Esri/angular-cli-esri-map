@@ -1,8 +1,6 @@
 # angular-cli-esri-map
 
-This branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, and Angular CLI. It uses esri-loader, a small library that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
-
-To use arcgis-webpack-plugin instead of esri-loader to load the ArcGIS API for JavaScript modules, check out the `@TODO ADD BRANCH NAME` branch of this repo.
+This branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules (v3.x or v4.x) in ArcGIS applications.
 
 If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `esri-loader` and `@types/arcgis-js-api` manually.
 
@@ -12,7 +10,7 @@ If you would like to create your own Angular CLI project from scratch and incorp
 
 - [Angular CLI](https://github.com/angular/angular-cli)
 - [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
-- [esri-loader](https://github.com/Esri/esri-loader)
+- [arcgis-webpack-plugin](https://github.com/Esri/arcgis-webpack-plugin)
 - [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
 
 ## Build your project
@@ -35,6 +33,7 @@ If you would like to create your own Angular CLI project from scratch and incorp
 ### Run the application locally
 
 ```bash
+  git checkout arcgis-webpack-angular
   ng serve
 ```
 
