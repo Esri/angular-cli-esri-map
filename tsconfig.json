@@ -10,17 +10,20 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2018",
-      "dom"
+      "dom",
+      "es2015.promise",
+      "es5",
+      "es6"
     ]
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
+  // [NOTE: these options simply haven't been tested yet with the angular-cli-esri-map components]
+  // "angularCompilerOptions": {
+  //   "fullTemplateTypeCheck": true,
+  //   "strictInjectionParameters": true
+  // }
 }
