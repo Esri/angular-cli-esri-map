@@ -21,7 +21,7 @@ To use `esri-loader` instead of `arcgis-webpack-plugin` checkout the [`master`](
 ### Clone or download this repo
 
 ```bash
-  git clone https://github.com/andygup/angular-cli-esri-map.git
+  git clone https://github.com/Esri/angular-cli-esri-map.git
 ```
 
 ### Install dependencies
