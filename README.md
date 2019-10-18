@@ -1,6 +1,6 @@
 # angular-cli-esri-map
 
-This branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, webpack and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules (v3.x or v4.x) in non-ArcGIS applications.
+This branch contains a simple but complete application that uses the ArcGIS API for JavaScript 4.x, an enterprise geospatial API, webpack and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules (v3.x or v4.x) in non-ArcGIS applications.
 
 If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `arcgis-webpack-plugin`, `@angular-builders/custom-webpack` and `@types/arcgis-js-api` manually.
 
@@ -11,7 +11,7 @@ To use `esri-loader` instead of `arcgis-webpack-plugin` checkout the [`master`](
 **Note: This repo is only tested to work with the most current version of the following dependencies.**
 
 - Requires Angular and Angular CLI 8 (latest) [Angular CLI 8](https://github.com/angular/angular-cli)
-- [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
+- [ArcGIS API for JavaScript 4.x](https://developers.arcgis.com/javascript/)
 - [arcgis-webpack-plugin](https://github.com/Esri/arcgis-webpack-plugin)
 - [angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack)
 - [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
