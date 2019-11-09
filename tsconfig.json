@@ -3,22 +3,22 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "types": ["arcgis-js-api"],
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
       "dom",
-      "es2015.promise",
-      "es5",
-      "es6"
+      "es2018"
     ]
   }
   // [NOTE: these options simply haven't been tested yet with the angular-cli-esri-map components]

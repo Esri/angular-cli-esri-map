@@ -20,7 +20,6 @@
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
     "@types/arcgis-js-api": "^4.12.0",
-    "esri-loader": "^2.10.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -31,7 +30,6 @@
     "@angular/cli": "~8.3.0",
     "@angular/compiler-cli": "~8.2.3",
     "@angular/language-service": "~8.2.3",
-    "@arcgis/webpack-plugin": "^4.12.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
