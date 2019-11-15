@@ -1,10 +1,10 @@
 # angular-cli-esri-map
 
-This branch contains a simple but complete application that uses the ArcGIS API for JavaScript 4.x, an enterprise geospatial API, webpack and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules (v3.x or v4.x) in non-ArcGIS applications.
+This branch contains a simple but complete application that uses the ArcGIS API for JavaScript 4.x, which is an enterprise geospatial API, webpack and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules.
 
 If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `arcgis-webpack-plugin`, `@angular-builders/custom-webpack` and `@types/arcgis-js-api` manually.
 
-To use `esri-loader` instead of `arcgis-webpack-plugin` checkout the [`master`](https://github.com/Esri/angular-cli-esri-map) branch of this repo.  
+To use `esri-loader` instead of `arcgis-webpack-plugin` checkout the [`master`](https://github.com/Esri/angular-cli-esri-map) branch of this repo. `esri-loader` lets you lazy load ArcGIS JavaScript API modules without webpack.
 
 ## Dependencies
 
@@ -49,10 +49,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Contributing
 

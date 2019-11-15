@@ -12,9 +12,9 @@
 */
 
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import Map from "arcgis-js-api/Map";
-import MapView from "arcgis-js-api/views/MapView";
 import esri = __esri; // Esri TypeScript Types
+import Map from "esri/Map";
+import MapView from "esri/views/MapView";
 
 @Component({
   selector: 'app-esri-map',
@@ -32,7 +32,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   private _center: Array<number> = [0.1278, 51.5074];
   private _basemap = 'streets';
   private _loaded = false;
-  private _view: esri.MapView = null;
+  private _view: esri.MapView = null; 
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -68,14 +68,13 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   constructor() { }
 
   async initializeMap() {
-    try {
 
       // Configure the Map
       const mapProperties: esri.MapProperties = {
         basemap: this._basemap
       };
 
-      const map: esri.Map = new Map(mapProperties);
+      const map = new Map(mapProperties);
 
       // Initialize the MapView
       const mapViewProperties: esri.MapViewProperties = {
@@ -86,13 +85,10 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       };
 
       this._view = new MapView(mapViewProperties);
-      await this._view.when();
+      
+      // wait for the map to load
+      await this._view.when(); 
       return this._view;
-
-    } catch (error) {
-      console.log('ArcGIS: ', error);
-    }
-
   }
 
   ngOnInit() {
