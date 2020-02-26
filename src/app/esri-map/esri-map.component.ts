@@ -1,5 +1,5 @@
 /*
-  Copyright 2019 Esri
+  Copyright 2020 Esri
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
@@ -12,7 +12,6 @@
 */
 
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import esri = __esri; // Esri TypeScript Types
 import Map from "esri/Map";
 import MapView from "esri/views/MapView";
 
@@ -32,7 +31,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   private _center: Array<number> = [0.1278, 51.5074];
   private _basemap = 'streets';
   private _loaded = false;
-  private _view: esri.MapView = null; 
+  private _view: MapView = null; 
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -70,14 +69,14 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   async initializeMap() {
 
       // Configure the Map
-      const mapProperties: esri.MapProperties = {
+      const mapProperties = {
         basemap: this._basemap
       };
 
       const map = new Map(mapProperties);
 
       // Initialize the MapView
-      const mapViewProperties: esri.MapViewProperties = {
+      const mapViewProperties = {
         container: this.mapViewEl.nativeElement,
         center: this._center,
         zoom: this._zoom,
