@@ -37,10 +37,10 @@ To use `esri-loader` instead of `arcgis-webpack-plugin` checkout the [`master`](
 
 ```bash
   git checkout arcgis-webpack-angular
-  ng serve
+  ng serve --open
 ```
 
-Navigate to http://localhost:4200 to see the app running. The app will automatically reload if you change any of the source files. You can shut down the development server with a `Control C` any time you wish.
+The app will automatically reload if you change any of the source files. You can shut down the development server with a `Control C` in the terminal any time you wish.
 
 ### Code scaffolding
 
