@@ -11,9 +11,11 @@
   limitations under the License.
 */
 
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import Map from "esri/Map";
 import MapView from "esri/views/MapView";
+import FeatureLayer from "esri/layers/FeatureLayer";
+import esriConfig from "esri/config";
 
 @Component({
   selector: 'app-esri-map',
@@ -64,40 +66,105 @@ export class EsriMapComponent implements OnInit, OnDestroy {
     return this._basemap;
   }
 
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   async initializeMap() {
 
-      // Configure the Map
-      const mapProperties = {
-        basemap: this._basemap
-      };
+    this.initializeWorkers();
 
-      const map = new Map(mapProperties);
+    const citiesRenderer = {
+      type: "simple", // autocasts as new SimpleRenderer()
+      symbol: {
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+        size: 5,
+        color: [0, 244, 255, 1]
+      }
+    };
 
-      // Initialize the MapView
-      const mapViewProperties = {
-        container: this.mapViewEl.nativeElement,
-        center: this._center,
-        zoom: this._zoom,
-        map: map
-      };
+    const policeStopsLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Denver_Police_Stops/FeatureServer/0",
+      renderer: citiesRenderer as any
+    });
 
-      this._view = new MapView(mapViewProperties);
-      
-      // wait for the map to load
-      await this._view.when(); 
-      return this._view;
+    // Configure the Map
+    const mapProperties = {
+      basemap: this._basemap,
+      layers: [policeStopsLayer]
+    };
+
+    const map = new Map(mapProperties);   
+
+    // Initialize the MapView
+    const mapViewProperties = {
+      container: this.mapViewEl.nativeElement,
+      center: this._center,
+      zoom: this._zoom,
+      map: map
+    };
+
+    this._view = new MapView(mapViewProperties);
+    
+    // wait for the map to load
+    await this._view.when(); 
+    return this._view;
+  }
+
+  initializeWorkers() {
+    const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.16/";
+    const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
+
+    esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;
+    esriConfig.workers.loaderConfig = {
+      baseUrl: `${DEFAULT_WORKER_URL}dojo`,
+      packages: [
+        { name: "esri", location: `${DEFAULT_WORKER_URL}esri` },
+        { name: "dojo", location: `${DEFAULT_WORKER_URL}dojo` },
+        { name: "dojox", location: `${DEFAULT_WORKER_URL}dojox` },
+        { name: "dstore", location: `${DEFAULT_WORKER_URL}dstore` },
+        { name: "moment", location: `${DEFAULT_WORKER_URL}moment` },
+        { name: "@dojo", location: `${DEFAULT_WORKER_URL}@dojo` },
+        {
+          name: "cldrjs",
+          location: `${DEFAULT_WORKER_URL}cldrjs`,
+          main: "dist/cldr"
+        },
+        {
+          name: "globalize",
+          location: `${DEFAULT_WORKER_URL}globalize`,
+          main: "dist/globalize"
+        },
+        {
+          name: "maquette",
+          location: `${DEFAULT_WORKER_URL}maquette`,
+          main: "dist/maquette.umd"
+        },
+        {
+          name: "maquette-css-transitions",
+          location: `${DEFAULT_WORKER_URL}maquette-css-transitions`,
+          main: "dist/maquette-css-transitions.umd"
+        },
+        {
+          name: "maquette-jsx",
+          location: `${DEFAULT_WORKER_URL}maquette-jsx`,
+          main: "dist/maquette-jsx.umd"
+        },
+        { name: "tslib", location: `${DEFAULT_WORKER_URL}tslib`, main: "tslib" }
+      ]
+    };    
   }
 
   ngOnInit() {
-    // Initialize MapView and return an instance of MapView
-    this.initializeMap().then((mapView) => {
-      // The map has been initialized
-      console.log('mapView ready: ', mapView.ready);
-      this._loaded = mapView.ready;
-      this.mapLoadedEvent.emit(true);
-    });
+    // For more info on change detection handling see: https://github.com/Esri/angular-cli-esri-map/issues/70
+    // as well as this blog post: https://www.andygup.net/manual-change-detection-in-angular-for-performance/
+    this.zone.runOutsideAngular(() => {
+      // Initialize MapView and return an instance of MapView
+      this.initializeMap().then((mapView) => {
+        // The map has been initialized
+        console.log('mapView ready: ', mapView.ready);
+        this._loaded = mapView.ready;
+        this.mapLoadedEvent.emit(true);
+      });
+    })
   }
 
   ngOnDestroy() {
