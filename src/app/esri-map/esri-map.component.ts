@@ -11,7 +11,7 @@
   limitations under the License.
 */
 
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import Map from "esri/Map";
 import MapView from "esri/views/MapView";
 import FeatureLayer from "esri/layers/FeatureLayer";
@@ -66,7 +66,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
     return this._basemap;
   }
 
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   async initializeMap() {
 
@@ -154,13 +154,17 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Initialize MapView and return an instance of MapView
-    this.initializeMap().then((mapView) => {
-      // The map has been initialized
-      console.log('mapView ready: ', mapView.ready);
-      this._loaded = mapView.ready;
-      this.mapLoadedEvent.emit(true);
-    });
+    // For more info on change detection handling see: https://github.com/Esri/angular-cli-esri-map/issues/70
+    // as well as this blog post: https://www.andygup.net/manual-change-detection-in-angular-for-performance/
+    this.zone.runOutsideAngular(() => {
+      // Initialize MapView and return an instance of MapView
+      this.initializeMap().then((mapView) => {
+        // The map has been initialized
+        console.log('mapView ready: ', mapView.ready);
+        this._loaded = mapView.ready;
+        this.mapLoadedEvent.emit(true);
+      });
+    })
   }
 
   ngOnDestroy() {
