@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   // Set our map properties
   mapCenter = [-105.0, 39.65];
-  basemapType = 'topo-vector';
+  basemapType = 'streets-vector';
   mapZoomLevel = 12;
 
   // See app.component.html
