@@ -4,6 +4,8 @@ This branch contains a simple but complete application that uses the ArcGIS API 
 
 If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `arcgis-webpack-plugin`, `@angular-builders/custom-webpack` and `@types/arcgis-js-api` manually, and then you'll need to configure the css in `angular.json` (see the file in this branch for an example).
 
+To use arcgis-webpack-plugin instead of esri-loader to load the ArcGIS API for JavaScript modules, check out the [`@arcgis-webpack-angular`](https://github.com/Esri/angular-cli-esri-map/tree/arcgis-webpack-angular) branch of this repo.
+
 If you don't want to use webpack then use `esri-loader` instead by checking out the [`master`](https://github.com/Esri/angular-cli-esri-map) branch of this repo. `esri-loader` lets you lazy load ArcGIS JavaScript API modules without webpack.
 
 ## Dependencies
