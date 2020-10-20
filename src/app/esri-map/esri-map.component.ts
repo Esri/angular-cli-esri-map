@@ -110,7 +110,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   }
 
   initializeWorkers() {
-    const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.16/";
+    const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.17/";
     const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
 
     esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;
