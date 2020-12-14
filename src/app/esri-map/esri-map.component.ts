@@ -21,13 +21,13 @@ import {
   EventEmitter,
   OnDestroy
 } from "@angular/core";
-import { loadModules } from "esri-loader";
+import { EsriLoaderService } from "../esri-loader.service";
 import esri = __esri; // Esri TypeScript Types
 
 @Component({
   selector: "app-esri-map",
   templateUrl: "./esri-map.component.html",
-  styleUrls: ["./esri-map.component.scss"]
+  styleUrls: ["./esri-map.component.scss"],
 })
 export class EsriMapComponent implements OnInit, OnDestroy {
   @Output() mapLoadedEvent = new EventEmitter<boolean>();
@@ -78,19 +78,19 @@ export class EsriMapComponent implements OnInit, OnDestroy {
     return this._basemap;
   }
 
-  constructor() {}
+  constructor(readonly esriLoaderService: EsriLoaderService) {}
 
   async initializeMap() {
     try {
       // Load the modules for the ArcGIS API for JavaScript
-      const [EsriMap, EsriMapView] = await loadModules([
+      const [EsriMap, EsriMapView] = await this.esriLoaderService.loadModules([
         "esri/Map",
-        "esri/views/MapView"
+        "esri/views/MapView",
       ]);
 
       // Configure the Map
       const mapProperties: esri.MapProperties = {
-        basemap: this._basemap
+        basemap: this._basemap,
       };
 
       const map: esri.Map = new EsriMap(mapProperties);
@@ -100,25 +100,24 @@ export class EsriMapComponent implements OnInit, OnDestroy {
         container: this.mapViewEl.nativeElement,
         center: this._center,
         zoom: this._zoom,
-        map: map
+        map: map,
       };
 
       this._view = new EsriMapView(mapViewProperties);
       await this._view.when();
-      return this._view;
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     // Initialize MapView and return an instance of MapView
-    this.initializeMap().then(mapView => {
-      // The map has been initialized
-      console.log("mapView ready: ", this._view.ready);
-      this._loaded = this._view.ready;
-      this.mapLoadedEvent.emit(true);
-    });
+    await this.initializeMap();
+
+    // The map has been initialized
+    console.log("mapView ready: ", this._view.ready);
+    this._loaded = this._view.ready;
+    this.mapLoadedEvent.emit(true);
   }
 
   ngOnDestroy() {
