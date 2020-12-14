@@ -27,7 +27,7 @@ import esri = __esri; // Esri TypeScript Types
 @Component({
   selector: "app-esri-map",
   templateUrl: "./esri-map.component.html",
-  styleUrls: ["./esri-map.component.scss"],
+  styleUrls: ["./esri-map.component.scss"]
 })
 export class EsriMapComponent implements OnInit, OnDestroy {
   @Output() mapLoadedEvent = new EventEmitter<boolean>();
@@ -85,12 +85,12 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       // Load the modules for the ArcGIS API for JavaScript
       const [EsriMap, EsriMapView] = await this.esriLoaderService.loadModules([
         "esri/Map",
-        "esri/views/MapView",
+        "esri/views/MapView"
       ]);
 
       // Configure the Map
       const mapProperties: esri.MapProperties = {
-        basemap: this._basemap,
+        basemap: this._basemap
       };
 
       const map: esri.Map = new EsriMap(mapProperties);
@@ -100,7 +100,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
         container: this.mapViewEl.nativeElement,
         center: this._center,
         zoom: this._zoom,
-        map: map,
+        map: map
       };
 
       this._view = new EsriMapView(mapViewProperties);

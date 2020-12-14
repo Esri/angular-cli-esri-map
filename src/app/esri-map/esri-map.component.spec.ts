@@ -29,7 +29,7 @@ describe("EsriMapComponent", () => {
     TestBed.configureTestingModule({
       declarations: [EsriMapComponent],
       providers: [
-        { provide: EsriLoaderService, useValue: new MockEsriLoaderService() },
+        { provide: EsriLoaderService, useValue: new MockEsriLoaderService() }
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(EsriMapComponent);
