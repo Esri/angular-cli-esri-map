@@ -1,52 +1,43 @@
 # angular-cli-esri-map
 
-This branch contains a simple but complete application that uses the ArcGIS API for JavaScript 4.x, which is an enterprise geospatial API, along with webpack and Angular CLI. It uses arcgis-webpack-plugin to help load ArcGIS JavaScript API modules.
+## DEPRECATION NOTICE
 
-If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `arcgis-webpack-plugin`, `@angular-builders/custom-webpack` and `@types/arcgis-js-api` manually, and then you'll need to configure the css in `angular.json` (see the file in this branch for an example).
+> As of ArcGIS API for JavaScript version 4.18 (December 2020) this repository is deprecated. The Angular integration patterns shown here are for verions 4.17 and earlier of the API.
 
-To use arcgis-webpack-plugin instead of esri-loader to load the ArcGIS API for JavaScript modules, check out the [`@arcgis-webpack-angular`](https://github.com/Esri/angular-cli-esri-map/tree/arcgis-webpack-angular) branch of this repo.
+## Why is this repo being deprecated?
 
-If you don't want to use webpack then use `esri-loader` instead by checking out the [`master`](https://github.com/Esri/angular-cli-esri-map) branch of this repo. `esri-loader` lets you lazy load ArcGIS JavaScript API modules without webpack.
+At version 4.18 we released ES modules for the API. These new modules will ship alongside the existing AMD modules. This repo relies on patterns for integrating AMD modules, which is how we've shipped the API since version 4.0. 
 
-## Dependencies
+For more information on which modules you should use consult the SDK's [Introduction to tooling](https://developers.esri.com/javascript/latest/guide/tooling-intro/) Guide page.
 
-**Note: This repo is only tested to work with the most current version of the following dependencies.**
+The new ES modules also offer intregated support for secure services and they don't require the use of `@arcgis/webpack-plugin` or any additional webpack configuration. There is more information below on using workers with secure services and API versions 4.17 and earlier.
 
-- Requires Angular and Angular CLI 10 (latest) [Angular CLI 10](https://github.com/angular/angular-cli)
-- [ArcGIS API for JavaScript 4.x](https://developers.arcgis.com/javascript/)
-- [arcgis-webpack-plugin](https://github.com/Esri/arcgis-webpack-plugin)
-- [angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack)
-- [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
+## Where can I find samples using the new ES modules?
 
-## Build your project
+Samples using the ES modules are available on the [`jsapi-resources`](https://github.com/Esri/jsapi-resources/tree/master/esm-samples) github repository. Documentation on using the ES modules is in the SDK's [Build with ES modules](https://developers.esri.com/javascript/latest/guide/es-modules/) Guide page.
 
-### Clone or download this repo
+## What's in this repo?
 
-```bash
-  git clone https://github.com/Esri/angular-cli-esri-map.git
-```
+**This repo is for versions 4.17 and earlier of the ArcGIS API for JavaScript, or if you are using Dojo 1 or RequireJS.**
 
-### Install dependencies
+The `master` branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, and Angular CLI. It uses esri-loader, a small library that lazy loads ArcGIS JavaScript API modules via CDN using a `loadModules()` method. The esri-loader pattern works with just about any build tool and bundler.
 
-```bash
-  cd angular-cli-esri-map
-  npm install
-```
+The [`arcgis-webpack-angular`](https://github.com/Esri/angular-cli-esri-map/tree/arcgis-webpack-angular) branch is for local builds with webpack using native `import` statements.
 
-## Working with Angular CLI
+## IE and Edge Legacy support
 
-### Run the application locally
+**IMPORTANT:** Version 4.17 of the ArcGIS API for JavaScript is the last version of the API to support IE11 and Edge Legacy. 
+
+## Run the webpack branch locally
 
 ```bash
   git checkout arcgis-webpack-angular
   ng serve --open
 ```
 
-The app will automatically reload if you change any of the source files. You can shut down the development server with a `Control C` in the terminal any time you wish.
+## Working with the View's CSS
 
-### Working with the View's CSS
-
-For best performance, we recommend using the local copy of the css for the ArcGIS API for JavaScript. You can configure this in `angular.json` and choose from any of the [themes](https://developers.arcgis.com/javascript/latest/guide/styling/):
+For best performance with local webpack builds, we recommend using the local copy of the css for the ArcGIS API for JavaScript. You can configure this in `angular.json` and choose from any of the [themes](https://developers.arcgis.com/javascript/latest/guide/styling/):
 
 ```json
   "styles": [
@@ -55,7 +46,7 @@ For best performance, we recommend using the local copy of the css for the ArcGI
   ],
 ```
 
-### Working with secure ArcGIS services
+## Working with secure ArcGIS services
 
 When working with secure ArcGIS services there is additional code that you'll need to get it to work with webpack. If you encounter an error similar to this: `DOMException: Failed to execute 'importScripts' on 'WorkerGlobalScope'`, then you'll need to follow the instructions outlined here: https://github.com/Esri/arcgis-webpack-plugin#usage. Add that code to your component and it should resolve the problem. This branch of the repo includes an example that uses workers. 
 
@@ -63,7 +54,7 @@ IMPORTANT: be sure to configure the `DEFAULT_WORKER_URL` property to use the sam
 
 ```js
   // All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-  // See https://js.arcgis.com/4.16/esri/copyright.txt for details.
+  // See https://js.arcgis.com/4.17/esri/copyright.txt for details.
   //>>built
 ```
 
@@ -71,23 +62,22 @@ And, you need to match this version using this pattern within your component:
 
 ```js
   // Refer to esri-map.component.ts file for a complete version of this code
-  const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.16/";
+  const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.17/";
   const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
 ```
 
 If you are still having problems then open an issue in this repo.
 
-### Code scaffolding
+## Dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This repo is only tested to work with the most current version of the following dependencies:
 
-### Build
+- [Angular CLI](https://github.com/angular/angular-cli)
+- [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
+- [@arcgis/webpack-plugin](https://www.npmjs.com/package/@arcgis/webpack-plugin)
+- [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack)
+- Optional: [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Contributing
-
-Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
 
