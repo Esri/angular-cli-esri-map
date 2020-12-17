@@ -2,7 +2,7 @@
 
 ## DEPRECATION NOTICE
 
-> As of ArcGIS API for JavaScript version 4.18 (December 2020) this repository is deprecated. The Angular integration patterns shown here are for verions 4.17 and earlier of the API.
+> As of ArcGIS API for JavaScript version 4.18 (December 2020) this repository is deprecated. The Angular integration patterns shown here are for versions 4.17 and earlier of the API.
 
 ## Why is this repo being deprecated?
 
