@@ -1,64 +1,44 @@
 # angular-cli-esri-map
 
-This branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, and Angular CLI. It uses esri-loader, a small library that helps load ArcGIS JavaScript API modules (v3.x or v4.x) in non-Dojo applications.
+## DEPRECATION NOTICE
 
-To use arcgis-webpack-plugin instead of esri-loader to load the ArcGIS API for JavaScript modules, check out the [`@arcgis-webpack-angular`](https://github.com/Esri/angular-cli-esri-map/tree/arcgis-webpack-angular) branch of this repo.
+> As of ArcGIS API for JavaScript version 4.18 (December 2020) this repository is deprecated. The Angular integration patterns shown here are for verions 4.17 and earlier of the API.
 
-If you would like to create your own Angular CLI project from scratch and incorporate these components, [create a new Angular CLI project](https://cli.angular.io/) and copy the `src/app/` directory of this repo to your new project. You will need to install `esri-loader` and `@types/arcgis-js-api` manually.
+## Why is this repo being deprecated?
+
+At version 4.18 we released ES modules for the API that will ship alongside the existing AMD modules. This repo relies on patterns for integrating AMD modules, which is how we've shipped the API since version 4.0. 
+
+For more information on which modules you should use consult the SDK's [Introduction to tooling](https://developers.esri.com/javascript/latest/guide/tooling-intro/) Guide page.
+
+## Where can I find samples using the new ES modules?
+
+Samples using the ES modules are available on the [`jsapi-resources`](https://github.com/Esri/jsapi-resources/tree/master/esm-samples) github repository. Documentation on using the ES modules is in the SDK's [Build with ES modules](https://developers.esri.com/javascript/latest/guide/es-modules/) Guide page.
+
+## What's in this repo?
+
+**This repo is for versions 4.17 and earlier of the ArcGIS API for JavaScript, or if you are using Dojo 1 or RequireJS.**
+
+The `master` branch contains a simple but complete application that uses the ArcGIS API for JavaScript, an enterprise geospatial API, and Angular CLI. It uses esri-loader, a small library that lazy loads ArcGIS JavaScript API modules via CDN using a `loadModules()` method. The esri-loader pattern works with just about any build tool and bundler.
+
+The [`@arcgis-webpack-angular`](https://github.com/Esri/angular-cli-esri-map/tree/arcgis-webpack-angular) branch is for local builds using native `import` statements.
+
+## IE and Edge Legacy support
+
+**IMPORTANT:** Version 4.17 of the ArcGIS API for JavaScript is the last version of the API to support IE11 and Edge Legacy. 
 
 ## Dependencies
 
-**Note: This repo is only tested to work with the most current version of the following dependencies.**
+This repo is only tested to work with the most current version of the following dependencies:
 
 - [Angular CLI](https://github.com/angular/angular-cli)
 - [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
 - [esri-loader](https://github.com/Esri/esri-loader)
-- [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
+- Optional: [ArcGIS API for JavaScript type definitions](https://github.com/Esri/jsapi-resources/tree/master/4.x/typescript) (@types/arcgis-js-api)
 
-## Build your project
-
-### Clone or download this repo
-
-```bash
-  git clone https://github.com/andygup/angular-cli-esri-map.git
-```
-
-### Install dependencies
-
-```bash
-  cd angular-cli-esri-map
-  npm install
-```
-
-## Working with Angular CLI
-
-### Run the application locally
-
-```bash
-  ng serve
-```
-
-Navigate to http://localhost:4200 to see the app running. The app will automatically reload if you change any of the source files. You can shut down the development server with a `Control C` any time you wish.
-
-### Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-### Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Contributing
-
-Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
 
-Copyright 2019 Esri
+Copyright 2020 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
