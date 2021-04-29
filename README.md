@@ -8,13 +8,13 @@
 
 At version 4.18 we released ES modules for the API. These new modules will ship alongside the existing AMD modules. This repo relies on patterns for integrating AMD modules, which is how we've shipped the API since version 4.0. 
 
-For more information on which modules you should use consult the SDK's [Introduction to tooling](https://developers.esri.com/javascript/latest/guide/tooling-intro/) Guide page.
+For more information on which modules you should use consult the SDK's [Introduction to tooling](https://developers.arcgis.com/javascript/latest/guide/tooling-intro/) Guide page.
 
 The new ES modules also offer intregated support for secure services and they don't require the use of `@arcgis/webpack-plugin` or any additional webpack configuration. There is more information below on using workers with secure services and API versions 4.17 and earlier.
 
 ## Where can I find samples using the new ES modules?
 
-Samples using the ES modules are available on the [`jsapi-resources`](https://github.com/Esri/jsapi-resources/tree/master/esm-samples) github repository. Documentation on using the ES modules is in the SDK's [Build with ES modules](https://developers.esri.com/javascript/latest/guide/es-modules/) Guide page.
+Samples using the ES modules are available on the [`jsapi-resources`](https://github.com/Esri/jsapi-resources/tree/master/esm-samples) github repository. Documentation on using the ES modules is in the SDK's [Build with ES modules](https://developers.arcgis.com/javascript/latest/guide/es-modules/) Guide page.
 
 ## What's in this repo?
 
