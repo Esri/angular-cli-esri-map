@@ -1,6 +1,10 @@
 # angular-cli-esri-map
 
-## DEPRECATION NOTICE
+## RETIREMENT NOTICE (December 2021)
+
+> As of ArcGIS API for JavaScript version 4.22 (December 2021) this repository is retired. For more information see this issue: https://github.com/Esri/angular-cli-esri-map/issues/114. 
+
+## DEPRECATION NOTICE (December 2020)
 
 > As of ArcGIS API for JavaScript version 4.18 (December 2020) this repository is deprecated. The Angular integration patterns shown here are for verions 4.17 and earlier of the API.
 
