@@ -21,7 +21,7 @@
     "@angular/router": "^11.0.4",
     "@types/arcgis-js-api": "^4.17.0",
     "esri-loader": "^2.16.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.3"
